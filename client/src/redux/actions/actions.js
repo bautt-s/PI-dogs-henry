@@ -108,7 +108,7 @@ export function filterCreated(payload) {
 
 export function createDogs(payload) {
     return async function(dispatch) {
-        let res = await axios.post('http://localhost:3001/dogs', payload);
+        let res = await axios.post('https://dogs-backend-bautts.herokuapp.com/dogs/', payload);
         return (dispatch({
             type: 'CREATE_DOG',
             payload: res.data
@@ -119,7 +119,7 @@ export function createDogs(payload) {
 
 export function deleteDog(id) {
     return async function(dispatch) {
-        let res = await axios.delete('http://localhost:3001/dogs/' + id);
+        let res = await axios.delete('https://dogs-backend-bautts.herokuapp.com/dogs/' + id);
         return (dispatch({
             type: 'DELETE_DOG',
             payload: res.data
