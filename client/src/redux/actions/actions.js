@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export function getDogs() {
     return async function(dispatch) {
-        return await axios.get('http://localhost:3001/dogs')
+        return await axios.get('https://dogs-backend-bautts.herokuapp.com/dogs')
         .then(res => {
             dispatch({
                 type: 'GET_DOGS',
@@ -16,7 +16,7 @@ export function getDogs() {
 
 export function getTemperaments() {
     return async function(dispatch) {
-        return await axios.get('http://localhost:3001/temperaments')
+        return await axios.get('https://dogs-backend-bautts.herokuapp.com/temperaments')
         .then(res => {
             dispatch({
                 type: 'GET_TEMPERAMENTS',
@@ -30,7 +30,7 @@ export function getTemperaments() {
 export function getByName(name) {
     return async function(dispatch) {
         try {
-            return await axios.get(`http://localhost:3001/dogs?name=${name}`)
+            return await axios.get(`https://dogs-backend-bautts.herokuapp.com/dogs?name=${name}`)
             .then(res => {
                 dispatch({
                     type: 'GET_BY_NAME',
@@ -50,7 +50,7 @@ export function getByName(name) {
 export function getById(id) {
     return async function(dispatch) {
         try {
-            return await axios.get(`http://localhost:3001/dogs/${id}`)
+            return await axios.get(`https://dogs-backend-bautts.herokuapp.com/dogs/${id}`)
             .then(res => {
                 dispatch({
                     type: 'GET_BY_ID',
