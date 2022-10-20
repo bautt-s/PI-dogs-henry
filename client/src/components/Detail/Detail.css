@@ -375,3 +375,33 @@
         bottom: 5px;
     }
 }
+
+@media screen and (max-width: 460px) {
+    .detailBody .detDescripcion {
+        display: block;
+        top: 0;
+        margin: 50px auto;
+        width: 450px;
+        height: 220px;
+        padding-left: 20px;
+    }
+
+    .detDescripcion .detTemps {
+        display: block;
+        margin-top: 85px;
+        margin-left: 260px;
+        position: absolute;
+    }
+
+    .temp {
+        width: 120px;
+        position: relative;
+        font-size: 1.2em;
+        text-align: right;
+    }
+
+    .detailBody { width: 460px; height: 850px; }
+    .detNav { width: 460px }
+    .footerDet { width: 460px }
+    html {width: 100%}
+}

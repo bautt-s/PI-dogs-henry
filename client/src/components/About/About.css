@@ -163,3 +163,10 @@
         width: 500px;
     }
 }
+
+@media screen and (max-width: 460px) {
+    .aboutNav {width: 500px;}
+    .about {width: 500px;}
+    .aboutContent {width: 500px;}
+    .aboutFooter {width: 500px;}
+}

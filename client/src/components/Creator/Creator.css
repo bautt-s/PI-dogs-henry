@@ -405,3 +405,18 @@
         top: -10px;
     }
 }
+
+@media screen and (max-width: 460px) {
+    .containerCreator {width: 460px}
+    .creatorNav {width: 472px}
+    .footerCreator {width: 472px}
+    .creatorMenu {
+        width: 472px;
+        height: 856px
+    }
+
+    .nameInput { width: 250px }
+    .wrapperDual .createField {width: 113px }
+    .areaOpcional .opFields .imageField {width: 265px }
+    .areaOpcional .opFields .createBox {width: 272px }
+}
