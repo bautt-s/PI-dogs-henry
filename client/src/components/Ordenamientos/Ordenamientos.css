@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+
+.container-ordenamientos {
+    display: inline-block;
+    position: relative;
+}
+
+.fieldSort {
+    border: none;
+    background-color: #181111;
+    color: white;
+    height: 30px;
+    width: 100px;
+    padding-top: 2px;
+    padding-left: 10px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+}
+
+.fieldSort:hover {
+    border: 1px solid white;
+}
+
+@media screen and (max-width: 550px) {
+    .fieldSort {
+        width: 135px;
+        position: relative;
+        right: 25px;
+    }
+}

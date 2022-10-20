@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+
+.fields {
+    display: inline-block;
+    margin-left: 10px;
+} 
+
+.fieldTemp {
+    border: none;
+    background-color: #181111;
+    color: white;
+    height: 30px;
+    width: 145px;
+    padding-left: 10px;
+    padding-top: 2px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+}
+
+.fieldTemp:hover {
+    border: 1px solid white;
+}
+
+.fieldCr {
+    margin-left: 15px;
+    border: none;
+    background-color: #181111;
+    color: white;
+    height: 30px;
+    width: 120px;
+    padding-left: 10px;
+    padding-top: 2px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+}
+
+.fieldCr:hover {
+    border: 1px solid white;
+}

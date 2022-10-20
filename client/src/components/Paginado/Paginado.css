@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&display=swap');
+
+.paginado {
+    position: relative;
+    top: 15px;
+}
+
+.paginado ul {
+    list-style: none;
+}
+
+.paginado .numPag {
+    width: 50px;
+    height: 20px;
+    background: #181111;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    left: -28px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none;  /* Standard */
+}
+
+.paginado .numPag:hover { padding: 15px 20px }
+.paginado .numPag:active { background: #472e2e }
+
+.paginado .disabled {
+    background-color: #3b2929;
+    color: gray;
+    border: 1px solid black;
+}
+
+.paginado .pagActiva {
+    padding: 10px 15px;
+    left: -15px;
+}
+
+.paginado .pagActiva:hover { padding: 10px 15px }
+
+@media screen and (max-width: 650px) {
+    .paginado .numPag { padding: 5px }
+}
+
+@media screen and (max-width: 950px) {
+    .paginado .numPag {
+        display: inline-block;
+        padding: 15px 0px;
+        margin-left: 5px;
+    }
+
+    .paginado {top: -20px; left: 5px;}
+
+    .paginado .pagActiva {
+        left: -28px;
+        padding: 25px 0px 25px;
+    }
+
+    .paginado .numPag:hover { padding: 20px 0px }
+    .paginado .disabled:hover { padding: 15px 0px }
+    .paginado .pagActiva:hover { padding: 25px 0 }
+}

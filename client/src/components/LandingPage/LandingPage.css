@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
+
+.landing {
+    background: rgb(192,67,64);
+    background: linear-gradient(180deg, rgb(185, 65, 63) 0%, rgba(193,62,56,1) 100%);
+    background-position: center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; 
+    position: absolute;
+    z-index: -1;
+}
+
+#myVideo {
+    position: fixed;
+    left: 170px;
+    top: -100px;
+    min-width: 120%;
+    min-height: 120%;
+}
+
+.landingName {
+    color: rgba(255,201,75,1);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    font-size: 1.5em;
+    position: relative;
+    top: 60px;
+    margin-left: 70px;
+}
+
+.landingText {
+    position: fixed;
+    bottom: 0;
+    background: #181111f1;
+    color: #f1f1f1;
+    height: 100%;
+    width: 620px;
+    padding: 20px;
+}
+
+.landingTitle {
+    margin: 100px 0px 0px 0px;
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 3.2em;
+    text-decoration: underline;
+    text-decoration-color: rgba(255,201,75,1);
+}
+
+.landingWrapper:hover .landingTitle { text-decoration-style: dashed }
+
+.landingText p {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 1.7em;
+  text-align: justify;
+  max-width: 520px;
+  margin-top: 40px;
+}
+
+.landingButton {
+    text-decoration: none;
+}
+
+.landingButton button {
+    background: rgb(224, 169, 52);
+    border: none;
+    padding: 15px 25px;
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: white;
+    margin-top: 25px;
+    transition: all ease-in-out .2s;
+}
+
+.landingButton button:hover {
+    background: rgb(197, 144, 45);
+}
+
+.landingButton button:active {
+    background: rgb(222, 251, 255);
+    color: #181111;
+}
+
+.landingWrapper {
+    margin: 320px 0px 0px 60px;
+}
+
+.landingAbout {
+    margin-left: 25px;
+    text-decoration: none;
+}
+
+.landingAbout button {
+    border: none;
+    background: none;
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: rgb(224, 169, 52);
+    transition: all ease-in-out .3s;
+    padding: 15px 25px; 
+}
+
+.landingAbout button:hover {
+    background: rgb(197, 144, 45);
+    color: white;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------
+                                                        FULLY RESPONSIVE PAGE
+--------------------------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1600px) {
+    .landingText { width: 33% }
+    .landingTitle { font-size: 2.6vw }
+    .landingLinks { margin-top: 40px }
+
+    .landingName { 
+        margin-left: 50px; 
+        font-size: 1.8vw;
+    }
+
+    .landingText p {
+        font-size: 1.4vw;
+        max-width: 400px;
+    }
+
+    .landingWrapper {
+        margin-left: 40px;
+        padding-right: 30px;
+    }
+}
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+    #myVideo {
+        left: -220px;
+        top: 0px;
+        min-width: 160%;
+        min-height: 160%;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1300px) {
+    .landingText { text-align: center }
+    .landingName { margin-left: 20px }
+
+    #myVideo {
+        left: -420px;
+        top: 0px;
+        min-width: 160%;
+        min-height: 160%;
+    }
+
+    .landingText p {
+        text-align: center;
+        font-size: 1.8vw;
+    }
+
+    .landingWrapper {
+        margin-left: 30px;
+        padding-right: 40px;
+    }
+}
+
+@media (min-width: 951px) and (max-width: 1120px) {
+    .landingAbout { margin-left: 0 }
+    .landingWrapper { margin-top: 280px }
+    .landingLinks { margin-top: 0px }
+
+    .landingAbout button {
+        display: block;
+        padding: 15px 42px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+    }
+
+    #myVideo {
+        left: -220px;
+        top: -50px;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 950px) {
+    .landingName { display: none }
+    .landingWrapper { margin-top: 30px }
+    .landingLinks button { font-size: 1.9vw }
+
+    .landingText {
+        height: 300px;
+        width: 100%;
+    }
+
+    #myVideo {
+        left: -480px;
+        top: -50px;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    .landingTitle {
+        margin-top: 0;
+        font-size: 4.6vw;
+        text-align: center;
+    }
+
+    .landingText p {
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2.5vw;
+    }
+
+    .landingLinks {
+        margin-top: -10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+@media (min-width: 649px) and (max-width: 750px) {
+    .landingTitle { font-size: 5vw }
+    .landingText p { font-size: 3vw }
+}
+
+@media screen and (max-width: 649px) {
+    .landingName { display: none }
+    .landingWrapper { margin: 20px 0 0 20px }
+    .landingButton button { padding: 10px 20px }
+    .landingAbout { margin-left: 10px }
+
+    #myVideo {
+        left: -640px;
+        top: -50px;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    .landingText {
+        height: 320px;
+        width: 100%;
+    }
+
+    .landingTitle {
+        margin-top: 0;
+        font-size: 6vw;
+    }
+
+    .landingText p {
+        font-size: 4vw;
+        max-width: 300px;
+        margin-top: 50px;
+    }
+
+    .landingAbout button {
+        padding: 10px 36px;
+        margin: 15px 0 0 0;
+    }
+
+    .landingLinks { 
+        font-size: 3vw;
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 649px) {
+    .landingText p {
+        text-align: left;
+        font-size: 4vw;
+        max-width: 430px;
+        margin-top: 50px;
+    }
+}

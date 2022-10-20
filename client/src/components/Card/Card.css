@@ -1,0 +1,85 @@
+/* se utiliza la fuente Fira Sans para las tarjetas */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;800;900&display=swap');
+body { font-family: 'Fira Sans', sans-serif; }
+
+/* contenedor de la Card */
+.container {
+    width: 300px;
+    height: 420px;
+    background-color: white;
+    border-radius: 8px;
+
+    -webkit-box-shadow: 0px 0px 51px -18px rgb(48, 48, 48);
+    -moz-box-shadow: 0px 0px 51px -18px rgb(48, 48, 48);
+    box-shadow: 0px 0px 51px -18px rgb(48, 48, 48);
+}
+
+/* img de la Card */
+.imgDog {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 300px;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: all ease-in-out .4s;
+}
+
+/* efecto de la img al hacer hover */
+.container:hover .imgDog{
+    transform: scale(1.25) rotate(2deg);
+}
+
+/* wrapper de la img para que funcione bien el efecto */ 
+.wrapperImg {
+    overflow: hidden;
+}
+
+/* efecto de hover al title */
+.container:hover .cardTitle {
+    text-decoration: underline;
+    text-decoration-color: rgba(241,122,126,1);
+}
+
+/* titulo tarjeta */
+.cardTitle {
+    color: #201616;
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: 800;
+    width: 180px;
+    margin-left: 25px;
+}
+
+/* subtitulo peso */
+.cardSub {
+    color: gray;
+    margin-left: 25px;
+    margin-top: -10px;
+}
+
+/* texto temperamentos */
+.cardTemp {
+    color: black;
+    margin-top: -5px;
+    width: 250px;
+    margin-left: 25px;
+    font-size: 0.9em;
+}
+
+/* pseudoclase que da el borde de gradiente a la Card */
+.gradientBorder {
+    position: absolute;
+    background-color: gray;
+    width: 304px;
+    height: 424px;
+    margin-top: -2px;
+    margin-left: -2px;
+    border-radius: 10px;
+    background: rgb(241,122,126);
+    background: linear-gradient(360deg, rgba(241,122,126,1) 0%, rgba(249,166,108,1) 35%, rgba(255,201,75,1) 100%);
+    z-index: -1;
+}

@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
+
+.containerCreator {
+    background: rgb(241,122,126);
+    background: linear-gradient(360deg, rgba(241,122,126,1) 0%, rgba(249,166,108,1) 35%, rgba(255,201,75,1) 100%);
+    background-position: center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 900px; 
+    position: absolute;
+}
+
+.creatorNav {
+    background-color: #181111;
+    width: 100%;
+    height: 240px;
+}
+
+.returnWrapper {
+    margin: 90px 0 0 150px;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+}
+
+.returnCreator {
+    color: white;
+    width: 10px;
+    text-decoration: none;
+}
+
+.returnCreator p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.3em;
+    position: relative;
+    bottom: 57px;
+    left: 50px;
+}
+
+.logoCreator {
+    float: right;
+    margin: 20px 90px 0 0;
+}
+
+.logoCreator img {
+    width: 200px;
+    height: 200px;
+}
+
+.creatorMenu {
+    background-color: #f1efef;
+    display: block;
+    margin: 50px auto 0;
+    margin-bottom: -16px;
+    width: 1580px;
+    height: 605px;
+    border-radius: 30px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-top: 5px;
+    -webkit-box-shadow: 0px 0px 115px -30px rgba(82,82,82,1);
+    -moz-box-shadow: 0px 0px 115px -30px rgba(82,82,82,1);
+    box-shadow: 0px 0px 115px -30px rgba(82,82,82,1);
+}
+
+.creatorTitle {
+    font-family: 'Rubik', sans-serif;
+    font-size: 3em;
+    font-weight: 900;
+    color: #181111;
+    text-decoration: underline;
+    text-decoration-color: rgba(241,122,126,1);
+    margin-left: 60px;
+}
+
+.requiredSub { margin: -10px 0 0 60px }
+
+.must {
+    text-decoration: underline;
+    text-decoration-color: rgba(241,122,126,1);
+}
+
+.createLabel {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.9em;
+    font-weight: 700;
+    color: #181111;
+}
+
+.createField {
+    height: 25px;
+}
+
+.allFields {
+    display: block;
+    margin: 20px auto;
+    width: 1310px
+}
+
+.areaInicio {
+    width: 600px;
+    height: 250px;
+    display: inline-block;
+}
+
+.nameInput { width: 360px; }
+.classMax { margin-left: 14px; }
+.firstLabels { display: inline-block }
+.firstLabels label { display: block; margin-top: 20px }
+
+.firstFields {
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 25px;
+    position: absolute;
+}
+
+.wrapperDual {
+    display: block;
+    width: 600px;
+    margin-top: 25px;
+}
+
+.areaOpcional {
+    display: inline-block;
+    margin-left: 60px;
+}
+
+.opLabels { display: inline-block }
+.opLabels label { display: block; }
+.opLabels .pseudoLbl { margin-top: 20px }
+.imageField { width: 352px; height: 24px; }
+
+.opFields {
+    display: inline-block;
+    margin-left: 50px;
+    position: absolute;
+    margin-top: 5px;
+}
+
+.createBox { 
+    height: 30px; 
+    width: 360px; 
+    display: block; 
+    margin-top: 26px;
+    color: gray;
+}
+
+.selectedTemps {
+    display: block;
+    max-width: 420px;
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+    left: -40px;
+}
+
+.selectedTemps .selTempItem {
+    display: inline-block;
+    border: 1px solid #422e2e;
+    border-radius: 15px;
+    padding: 5px 10px 5px 5px;
+    margin: 5px 0 0 5px;
+}
+
+.selectedTemps .deleteSelectedTemp {
+    border: none;
+    background: none;
+    color: rgb(231, 118, 122);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    position: relative;
+    bottom: 2px;
+}
+
+.inputErrors {
+    color: rgb(235, 94, 99);
+    margin-left: 40px;
+}
+
+.breedButton { float: right }
+
+.breedSubmit {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    background: #2c1f1f;    
+    border: none;
+}
+
+.breedSubmit:hover {
+    background: #422e2e;
+}
+
+.breedSubmit:active {
+    background: #5e3e3e;
+    border: 1px solid black;
+}
+
+.footerCreator {
+    width: 100%;
+    height: 83px;
+    background: #181111;
+}
+
+.footerCreator .creditsCreator {
+    text-align: center;
+    position: relative;
+    top: 20px;
+    left: -40px;
+}
+
+.footerCreator li {
+    color: white;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.creatorFootWrap {
+    margin: 0 15px;
+    position: relative;
+    top: 5px;
+}
+
+.creditsCreator .bau {
+    margin-right: 10px;
+    top: 0px;
+}
+
+.areaOpcional .opLabels .hiddenLbl {
+    display: none;
+}
+
+.submitDisabled {
+    background-color: #533535;
+    color: gray;
+}
+
+.submitDisabled:hover {
+    background-color: #533535;
+    color: gray;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------
+                                                        FULLY RESPONSIVE PAGE
+--------------------------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1500px) {
+    .creatorNav {height: 180px}
+    .logoCreator {margin-top: 0}
+    .returnWrapper {margin: 80px 0 0 80px}
+}
+
+@media screen and (max-width: 1600px) {
+    .creatorNav {height: 150px}
+    .logoCreator {margin: -15px 45px 0 0}
+    .logoCreator img {height: 180px; width: 180px}
+    .returnWrapper {margin: 60px 0 0 80px}
+
+    .footerCreator {
+        position: relative;
+        top: -15px;
+    }
+
+    .creatorMenu {
+        height: 950px; 
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .creatorTitle {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .requiredSub {
+        text-align: center; 
+        margin-left: 0;
+    }
+
+    .allFields {
+        display: block;
+        margin: 20px auto;
+        width: 660px;
+    }
+
+    .firstFields { margin-left: 140px }
+
+    .areaInicio { margin-left: 0 }
+
+    .areaOpcional {
+        display: block;
+        margin-left: 0;
+    }
+
+    .imageField { width: 361px }
+    .createBox { width: 370px }
+
+    .breedButton {
+        float: none;
+        display: block;
+        margin: 40px auto;
+        width: 157px
+    }
+
+    .inputErrors {
+        display: block;
+        margin: 0 auto;
+        width: 320px;
+        position: relative;
+        top: 0px;
+    }
+
+    .selectedTemps {
+        max-width: 450px;
+        text-align: center;
+        position: relative;
+        left: -20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .creatorNav {height: 100px}
+    .logoCreator {display: none}
+    .returnCreator p {margin-left: 20px}
+    .footerCreator li { margin-left: 20px }
+
+    .footerCreator {
+        position: relative;
+        top: -16px;
+    }
+
+    .returnWrapper {
+        display: block;
+        margin: 0 auto 0;
+        text-align: center;
+        position: relative;
+        right: 20px;
+        top: 30px;
+    }
+
+    .creatorMenu {
+        margin-top: 0;
+        border-radius: 0;
+        height: 1100px;
+        width: 100%;
+    }
+
+    .creatorTitle {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .requiredSub {
+        text-align: center; 
+        margin-left: 0;
+    }
+
+    .areaInicio { 
+        border-bottom: 2px dashed #a7a7a7;
+        width: 500px;
+        padding-bottom: 20px;
+    }
+
+    .firstLabels { margin-left: 20px }
+    .firstFields { margin-left: 20px }
+    .nameInput { width: 280px }
+    .wrapperDual input { width: 128px }
+    .areaOpcional { display: block; margin-left: 0 }
+    .opLabels label { font-size: 1.6em }
+    .opLabels { margin-left: 20px }
+    .opFields { margin-left: 20px }
+    .areaOpcional .opLabels .tempLbl { display: none }
+    .areaOpcional .opLabels .hiddenLbl { display: block; margin-top: 25px }
+    .areaOpcional .opLabels pseudoLbl { margin-top: 30px }
+    .areaOpcional .opLabels { margin-top: 40px }
+    .areaOpcional .opFields { margin-top: 40px }
+    .areaOpcional .opFields .imageField { width: 297px }
+    .areaOpcional .opFields .createBox { margin-top: 22px; width: 305px }
+
+    .allFields {
+        display: block;
+        margin: 0 auto;
+        width: 500px;
+    }
+
+    .breedButton {
+        float: none;
+        display: block;
+        margin: 40px auto;
+        width: 157px
+    }
+
+    .inputErrors {
+        display: block;
+        margin: 0 auto;
+        width: 320px;
+        padding-left: 60px;
+        position: relative;
+        top: -10px;
+    }
+}
