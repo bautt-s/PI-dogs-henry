@@ -77,7 +77,7 @@ function rootReducer(state = initialState, action) {
             if (state.dogs === 'No se encontró el perro.') return {...state}
 
             const pesoOrdenado =
-            action.payload === "menor"
+            (action.payload === "menor")
                 ? state.dogs.sort((a, b) => {
                     if (a.peso.includes('NaN')) {
                     return 1000;
@@ -115,7 +115,7 @@ function rootReducer(state = initialState, action) {
 
             return {
                 ...state,
-                dogs: filterDog,
+                dogs: filterDog
             };
         
         

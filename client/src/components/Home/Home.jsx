@@ -12,6 +12,7 @@ import Paginado from "../Paginado/Paginado.jsx";
 import Logo from '../../img/logo.png';
 import LinkedIn from '../../img/linkedin.png';
 import GitHub from '../../img/github.png';
+import Loader from '../Loader/Loader.jsx';
 import './Home.css';
 
 
@@ -72,7 +73,7 @@ const Home = () => {
 
     return (
         <div className="home">
-
+            {console.log(dogsMostrados)}
 
             <div className="navBg">
                 <span className="isotipo">Fetch Pups</span>
@@ -107,7 +108,6 @@ const Home = () => {
                 </div>
                 
                 <img className="logo" src={Logo} alt="logoPerro"/>
-
             </div> 
 
 
@@ -124,7 +124,7 @@ const Home = () => {
 
 
             <div className="containerDogs">
-                {Array.isArray(dogsMostrados) && dogsMostrados ? dogsMostrados.map(dog => {
+                {Array.isArray(dogs) ? (dogsMostrados.length ? dogsMostrados.map(dog => {
                     return (
                         <Card 
                             id = {dog.id}
@@ -135,7 +135,7 @@ const Home = () => {
                             temperaments = {dog.temperaments}
                         />
                     );
-                }) : (! dogs.length && <div className="home404">{dogs.msg}</div>)}
+                }) : <Loader />) : <div className="home404">{dogs.msg}</div>}
             </div>
 
 
