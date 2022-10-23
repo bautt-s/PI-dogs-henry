@@ -73,7 +73,6 @@ const Home = () => {
 
     return (
         <div className="home">
-            {console.log(dogsMostrados)}
 
             <div className="navBg">
                 <span className="isotipo">Fetch Pups</span>

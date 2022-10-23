@@ -97,7 +97,7 @@ const Detail = () => {
                 
             ) : (
                 Array.isArray(details) 
-                ? <Loader className="loader"/>
+                ? <div className="loaderDetail"><Loader /></div>
                 : <div className="detail404">
                     <div className="404msj">
                         <h1>{details}</h1>

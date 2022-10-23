@@ -106,13 +106,30 @@ export function filterCreated(payload) {
 }
 
 
-export function createDogs(payload) {
+// export function createDogs(payload) {
+//     return async function(dispatch) {
+//         let res = await axios.post('https://dogs-backend-bautts.herokuapp.com/dogs/', payload);
+//         return (dispatch({
+//             type: 'CREATE_DOG',
+//             payload: res.data
+//         }));
+//     };
+// }
+
+export function createDogs(breed) {
     return async function(dispatch) {
-        let res = await axios.post('https://dogs-backend-bautts.herokuapp.com/dogs/', payload);
-        return (dispatch({
-            type: 'CREATE_DOG',
-            payload: res.data
-        }));
+        try {
+            let res = await axios.post('https://dogs-backend-bautts.herokuapp.com/dogs/', breed);
+            return (dispatch({
+                type: 'CREATE_DOG',
+                payload: res.data
+            }));
+        } catch (err) {
+            dispatch({
+                type: 'CREATE_DOG',
+                payload: err.response.data
+            })
+        }
     };
 }
 

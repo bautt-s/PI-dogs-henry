@@ -61,8 +61,10 @@ const Creator = () => {
     // obtengo el array de temperamentos y el de perros desde redux
     const temperamentsState = useSelector(state => state.temperaments);
     const dogs = useSelector(state => state.dogs);
-    const grupos = Array.from(new Set(dogs.map(d => d.grupo)));
+
+    // elementos de los dropdown menu
     const funciones = Array.from(new Set(dogs.map(d => d.funcion)));
+    const grupos = Array.from(new Set(dogs.map(d => d.grupo)));
 
     // tracker de la temperatura de la DB, errores y el estado de los inputs
     const [temperaturaDB, setTempDB] = useState([]);
@@ -101,11 +103,12 @@ const Creator = () => {
             const newDog = {
                 ...input,
                 nombre: input.nombre.trim(),
-                image: input.imagen.trim(),
+                imagen: input.imagen.length ? input.imagen.trim() : 'https://lacrafta.com/wp-content/uploads/2020/07/Papercraft-Dog-4.jpg',
                 temperaments: temperaturaDB
             };
 
-            dispatch(createDogs(newDog));
+            dispatch(createDogs(newDog))
+            .then(res => alert(res.payload));
     
             setTempDB([]);
             setInput({
@@ -120,7 +123,7 @@ const Creator = () => {
                 temperaments: [],
                 funcion: [],
                 grupo: [],
-            });     
+            });
         } 
     }
 

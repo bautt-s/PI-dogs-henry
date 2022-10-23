@@ -6,7 +6,7 @@ const initialState = {
     dogs: [],
     allDogs: [], 
     temperaments: [],
-    details: [],
+    details: []
 };
 
 
@@ -50,7 +50,7 @@ function rootReducer(state = initialState, action) {
 
 
         case 'SORT_BY_NAME':
-            if (state.dogs === 'No se encontró el perro.') return {...state}
+            if (state.dogs === 'Breed not found :(') return {...state}
 
             const nameSorted =
             action.payload === 'asc'
@@ -74,7 +74,7 @@ function rootReducer(state = initialState, action) {
 
 
         case 'SORT_BY_WEIGHT':
-            if (state.dogs === 'No se encontró el perro.') return {...state}
+            if (state.dogs === 'Breed not found :(') return {...state}
 
             const pesoOrdenado =
             (action.payload === "menor")
@@ -107,11 +107,7 @@ function rootReducer(state = initialState, action) {
 
         case 'SORT_BY_TEMPERAMENT':
             const allDogs = state.allDogs;
-            const filterDog =
-                action.payload === 'all'
-                ? allDogs
-                : allDogs.filter(e => e.temperaments?.includes(action.payload))
-            ;
+            const filterDog = (action.payload === 'all') ? allDogs : allDogs.filter(e => e.temperaments?.includes(action.payload));
 
             return {
                 ...state,
@@ -146,5 +142,6 @@ function rootReducer(state = initialState, action) {
     }
 
 }
+
 
 export default rootReducer;

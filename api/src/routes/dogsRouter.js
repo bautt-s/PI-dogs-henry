@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
     if (dogName) {
         const queryDog = await allDogs.filter(raza => raza.nombre.toLowerCase().includes(dogName));
-        queryDog.length ? res.status(200).send(queryDog) : res.status(404).json({msg: "No se encontró el perro."});
+        queryDog.length ? res.status(200).send(queryDog) : res.status(404).json({msg: "Breed not found :("});
     } else {
         res.status(200).send(allDogs);
     }
@@ -36,10 +36,10 @@ router.get('/:idRaza', async (req, res) => {
         const allDogs = await getAll();
         if (id) {
             const idDog = await allDogs.find(dog => dog.id == id);
-            idDog ? res.status(200).send(idDog) : res.status(404).json("No se encontró el perro.");
+            idDog ? res.status(200).send(idDog) : res.status(404).json("Breed not found :(");
         }
     } catch (error) {
-        res.status(400).json("Hubo un error a la hora de buscar el ID.");
+        res.status(400).json("Unexpected error in search for ID.");
     }
 });
 
@@ -53,6 +53,12 @@ router.post('/', async (req, res) => {
         const { nombre, pesoMin, pesoMax, altMin, altMax, imagen, lifetimeMin, lifetimeMax, temperaments, funcion, grupo } = req.body;
 
         if (nombre && pesoMin && pesoMax && altMin && altMax) {
+            const repeatedName = Dog.findAll({
+                where: { nombre }
+            });
+
+            if (repeatedName) res.status(400).send("ERROR: That breed already exists.");
+
             const newDog = await Dog.create({
                 nombre: nombre[0].toUpperCase() + nombre.slice(1), 
                 altura: `${altMin} - ${altMax}`, 
@@ -64,22 +70,18 @@ router.post('/', async (req, res) => {
                 createdDB: true
             });
 
-            temperaments.forEach(async e => {
-                const auxTemperamentos = await Temperaments.findAll({
-                    where: { nombre: e },
-                    defaults: { nombre: e } 
-                });
+            const temps = await Temperaments.findAll({
+                where: { name: temperaments }
+            })
 
-                await newDog.addTemperaments(auxTemperamentos[0]);
-            });
+            newDog.addTemperaments(temps);
 
-            res.status(201).send("El perro se creó con éxito.");
+            res.status(201).send("Dog created successfully.");
         } else {
-            res.status(400).send("Faltan datos.");
+            res.status(400).send("ERROR: Missing data.");
         }
     } catch (error) {
-        console.log(error);
-        res.status(400).send("Hubo un error en el /post.");
+        res.status(400).send("ERROR: Unexpected error at /post.");
     }
 });
 
@@ -96,12 +98,12 @@ router.delete('/:id', async (req, res) => {
 
         if (deleteDog) {
           await deleteDog.destroy()
-          res.status(200).send('Se eliminó el perro.')
-        } else res.status(404).status('No se encontró el ID del perro.');
+          res.status(200).send('Dog was deleted successfully.')
+        } else res.status(404).status("ERROR: ID could not be found.");
 
-      } else res.status(400).send('Hubo un error.');
+      } else res.status(400).send('ERROR: Unexpected error.');
     } catch (e) {
-      res.status(400).send('La ID del perro no está bien tipada.')
+      res.status(400).send('ERROR: ID not properly typed.')
     }
 });
 
