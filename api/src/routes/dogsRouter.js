@@ -49,40 +49,45 @@ router.get('/:idRaza', async (req, res) => {
     crea una raza de perro en la base de datos relacionada con sus temperamentos */
 
 router.post('/', async (req, res) => {
-    try {
-        const { nombre, pesoMin, pesoMax, altMin, altMax, imagen, lifetimeMin, lifetimeMax, temperaments, funcion, grupo } = req.body;
+    const { nombre, pesoMin, pesoMax, altMin, altMax, imagen, lifetimeMin, lifetimeMax, temperaments, funcion, grupo } = req.body;
+    
+    const repeatedName = await Dog.findAll({
+        where: { nombre }
+    });
 
-        if (nombre && pesoMin && pesoMax && altMin && altMax) {
-            const repeatedName = Dog.findAll({
-                where: { nombre }
-            });
-
-            if (repeatedName) res.status(400).send("ERROR: That breed already exists.");
-
-            const newDog = await Dog.create({
-                nombre: nombre[0].toUpperCase() + nombre.slice(1), 
-                altura: `${altMin} - ${altMax}`, 
-                peso: `${pesoMin} - ${pesoMax}`, 
-                lifetime: lifetimeMin && lifetimeMax ? `${lifetimeMin} - ${lifetimeMax} years` : null,
-                image: imagen ? imagen : null, 
-                funcion: funcion ? funcion : null,
-                grupo: grupo ? grupo : null,
-                createdDB: true
-            });
-
-            const temps = await Temperaments.findAll({
-                where: { name: temperaments }
-            })
-
-            newDog.addTemperaments(temps);
-
-            res.status(201).send("Dog created successfully.");
-        } else {
-            res.status(400).send("ERROR: Missing data.");
-        }
-    } catch (error) {
-        res.status(400).send("ERROR: Unexpected error at /post.");
-    }
+    console.log(repeatedName)
+    if (repeatedName) res.status(400).send("ERROR: Breed already exists.");
+    else {
+        try {
+            if (nombre && pesoMin && pesoMax && altMin && altMax) {
+        
+                const newDog = await Dog.create({
+                    nombre: nombre[0].toUpperCase() + nombre.slice(1), 
+                    altura: `${altMin} - ${altMax}`, 
+                    peso: `${pesoMin} - ${pesoMax}`, 
+                    lifetime: lifetimeMin && lifetimeMax ? `${lifetimeMin} - ${lifetimeMax} years` : null,
+                    image: imagen ? imagen : null, 
+                    funcion: funcion ? funcion : null,
+                    grupo: grupo ? grupo : null,
+                    createdDB: true
+                });
+    
+                temperaments.forEach(async e => {
+                    const auxTemperamentos = await Temperaments.findAll({
+                        where: { nombre: e }
+                    });
+                
+                    await newDog.addTemperaments(auxTemperamentos[0]);
+                });
+    
+                res.status(201).send("Dog created successfully.");
+            } else {
+                res.status(400).send("ERROR: Missing data.");
+            }
+        } catch (error) {
+            res.status(400).send("ERROR: Unexpected error at database.");
+        }   
+    } 
 });
 
 
