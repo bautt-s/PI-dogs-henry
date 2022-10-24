@@ -167,7 +167,8 @@
 }
 
 .buttonsWrapper {
-    display: inline-block;
+    margin-left: 1250px;
+    margin-top: -80px
 }
 
 .updateButton {
@@ -305,7 +306,7 @@
     }
 
     .detailBody .detVisual .adicional {
-        width: 300px;
+        width: 400px;
     }
 
     .detDescripcion .detTemps {

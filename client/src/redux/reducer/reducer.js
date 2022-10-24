@@ -5,7 +5,8 @@
 const initialState = {
     dogs: [],
     temperaments: [],
-    details: []
+    details: [],
+    dogsCopy: []
 };
 
 
@@ -15,7 +16,8 @@ function rootReducer(state = initialState, action) {
         case 'GET_DOGS':
             return {
                 ...state,
-                dogs: action.payload
+                dogs: action.payload,
+                dogsCopy: action.payload
             }
 
 
@@ -104,7 +106,7 @@ function rootReducer(state = initialState, action) {
 
 
         case 'SORT_BY_TEMPERAMENT':
-            const allDogs = state.dogs;
+            const allDogs = state.dogsCopy;
             const filterDog = (action.payload === 'all') ? allDogs : allDogs.filter(e => e.temperaments?.includes(action.payload));
 
             const filterDB = [];
@@ -123,7 +125,7 @@ function rootReducer(state = initialState, action) {
         
         
         case 'FILTER_CREATED':
-            const auxDogs = state.dogs;
+            const auxDogs = state.dogsCopy;
 
             let filterCreation = null;
 
