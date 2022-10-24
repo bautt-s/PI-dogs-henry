@@ -5,7 +5,6 @@ import './Filtros.css'
 
 function Filtros({ setMinNP, setMaxNP, setPagActual, temperBox, createdBox }) {
     const temperamentsState = useSelector(state => state.temperaments)
-
     const dispatch = useDispatch();
     
     const handleFiltroCreados = (e) => {

@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getById, clearDetail, getDogs, deleteDog } from '../../redux/actions/actions.js'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useHistory  } from "react-router-dom";
 import RandomDog from "../RandomDog/RandomDog.jsx";
+import Updater from "../Updater/Updater.jsx";
 import Loader from "../Loader/Loader.jsx";
 import Logo from '../../img/logo.png';
 import LinkedIn from '../../img/linkedin.png';
@@ -16,21 +17,27 @@ const Detail = () => {
     const dispatch = useDispatch();
     const details = useSelector(state => state.details);
     const dogs = useSelector(state => state.dogs);
+    const [showUpdater, setShowUpdater] = useState(false); 
 
     const handleDelete = () => {
         dispatch(deleteDog(id));
         history.push('/home');
     }
 
+    const handleUpdate = () => {
+        setShowUpdater(true);
+    }
 
     useEffect(() => {
         dispatch(getById(id));
         dispatch(clearDetail());
     }, [dispatch, id]);
 
+
     useEffect(() => {
         ! dogs.length && dispatch(getDogs())
     }, [dispatch, dogs]);
+
 
     return (
         <div className="detail">
@@ -89,9 +96,11 @@ const Detail = () => {
                         </div>
                     </div>
 
-                    <div className="deleteWrapper">
-                        {(typeof details.id === 'string') ? details.id.includes("-") && <button className="deleteButton" onClick={handleDelete}>Delete</button> : null}
-                    </div>
+                    {(typeof details.id === 'string') ? details.id.includes("-") &&
+                    <div className="buttonsWrapper">
+                        <button className="updateButton" onClick={handleUpdate}>Update</button>
+                        <button className="deleteButton" onClick={handleDelete}>Delete</button>
+                    </div> : null}
                 </div>
 
                 
@@ -106,11 +115,16 @@ const Detail = () => {
             )}
 
 
+            {showUpdater && <div className="updaterWindow">
+                <Updater id={id} setShowUpdater={setShowUpdater} />
+            </div>}
+
+
             <div className="footerDet">
                 <div className="credits">
                     <ul>
                         <li>
-                            <a className="bau" href="#">Bautista Sánchez, 2022</a>
+                            <a className="bau" href="/about">Bautista Sánchez, 2022</a>
                         </li>
                         <li>
                             <ul>
@@ -118,7 +132,7 @@ const Detail = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30"src={LinkedIn}/></a>
+                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30" src={LinkedIn} alt="linkedin"/></a>
                         </li>
                         <li>
                             <ul>
@@ -126,7 +140,7 @@ const Detail = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub}/></a>
+                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub} alt="github"/></a>
                         </li>
                     </ul>
                 </div>

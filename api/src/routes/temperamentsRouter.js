@@ -3,7 +3,7 @@ const router = express.Router();
 const { Temperaments } = require("../db.js");
 const { dataApi } = require('../controllers/controllers.js');
 
-/*GET /temperaments:
+/* GET /temperaments:
     obtener todos los temperamentos posibles
     en una primera instancia deberán obtenerlos desde la API externa y guardarlos en su propia base de datos y luego ya utilizarlos desde allí */
 

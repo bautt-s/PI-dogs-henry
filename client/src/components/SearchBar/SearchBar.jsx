@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByName, getDogs } from "../../redux/actions/actions.js"
 import "./SearchBar.css";
@@ -27,7 +27,7 @@ const SearchBar = ({ setMinNP, setMaxNP, setPagActual }) => {
             <form name="search">
                 <input className="searchInput" type="text" placeholder="Search by breed..." name="search" onChange={e => handleChange(e)}/>
                 <button className="searchSubmit" type="submit" onClick={e => handleSearch(e)}>
-                    <img src={Lupa}/>
+                    <img src={Lupa} alt="lupa"/>
                 </button>
             </form>
         </div>

@@ -50,7 +50,7 @@ const About = () => {
                 <div className="credits">
                     <ul>
                         <li>
-                            <a className="bau" href="#">Bautista Sánchez, 2022</a>
+                            <a className="bau" href="/about">Bautista Sánchez, 2022</a>
                         </li>
                         <li>
                             <ul>
@@ -58,7 +58,7 @@ const About = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30"src={LinkedIn}/></a>
+                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30" src={LinkedIn} alt="linkedin"/></a>
                         </li>
                         <li>
                             <ul>
@@ -66,7 +66,7 @@ const About = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub}/></a>
+                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub} alt="github"/></a>
                         </li>
                     </ul>
                 </div>

@@ -125,7 +125,7 @@ export function createDogs(breed) {
                 payload: res.data
             }));
         } catch (err) {
-            dispatch({
+            return dispatch({
                 type: 'CREATE_DOG',
                 payload: err.response.data
             })
@@ -141,5 +141,23 @@ export function deleteDog(id) {
             type: 'DELETE_DOG',
             payload: res.data
         }));
+    };
+}
+
+
+export function updateDog(id, breed) {
+    return async function(dispatch) {
+        try {
+            let res = await axios.put(`https://dogs-backend-bautts.herokuapp.com/dogs/${id}`, breed);
+            return (dispatch({
+                type: 'UPDATE_DOG',
+                payload: res.data
+            }));
+        } catch (err) {
+            return dispatch({
+                type: 'UPDATE_DOG',
+                payload: err.response.data
+            })
+        }
     };
 }

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
+
+.updaterBackground {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(24, 24, 24, 0.829);
+}
+
+.updaterAlign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.closeUpdater {
+    float: right;
+    border: none;
+    background-color: rgb(241,122,126);
+    margin: 6px 6px 0 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.closeUpdater:hover { background-color: rgb(212, 99, 103) }
+.closeUpdater:active { background-color: rgb(163, 72, 75); color: white }
+
+.updaterBody {
+    width: 1400px;
+    height: 560px;
+    background-color: #181111;
+}
+
+.updaterFields {
+    margin: 40px 0 0 50px;
+}
+
+.updaterTitle {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgb(241,122,126);
+    margin-top: 40px;
+}
+
+.breedUpdate {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(224, 141, 62);
+    
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    color: white;
+
+    float: right;
+    margin-right: 40px;
+}
+
+.breedUpdate:hover { background-color: rgb(207, 128, 55) }
+.breedUpdate:active { background-color: rgb(255, 244, 233); color: black }
+.updateDisabled { background-color: rgb(158, 107, 59); color: lightgray }
+.updateDisabled:hover { background-color: rgb(158, 107, 59); color: lightgray }
+.updateDisabled:active { background-color: rgb(158, 107, 59); color: lightgray }
+
+.updTempItem {
+    display: inline-block;
+    border: 1px solid #fffefe;
+    border-radius: 15px;
+    padding: 5px 10px 5px 5px;
+    margin: 5px 0 0 5px;
+    color: white;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------
+                                                        FULLY RESPONSIVE PAGE
+--------------------------------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1600px) {
+    .updaterAlign {
+        min-height: 0;
+        position: relative;
+        top: 50px;
+    }
+
+    .updaterBody {
+        width: 1000px;
+        height: 800px;
+    }
+
+    .updaterFields {
+        display: auto;
+        margin: 0 auto;
+        width: 655px
+    }
+
+    .breedUpdate {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .updaterBody {
+        width: 650px;
+        height: 900px;
+    }
+
+    .updaterFields {
+        display: auto;
+        margin: 0 auto;
+        width: 490px
+    }
+
+    .breedUpdate { margin: 30px auto 50px }
+}
+
+@media screen and (max-width: 520px) {
+    .updaterBody {
+        width: 650px;
+        height: 900px;
+    }
+}

@@ -4,7 +4,6 @@
 
 const initialState = {
     dogs: [],
-    allDogs: [], 
     temperaments: [],
     details: []
 };
@@ -16,8 +15,7 @@ function rootReducer(state = initialState, action) {
         case 'GET_DOGS':
             return {
                 ...state,
-                dogs: action.payload,
-                allDogs: action.payload
+                dogs: action.payload
             }
 
 
@@ -106,17 +104,26 @@ function rootReducer(state = initialState, action) {
 
 
         case 'SORT_BY_TEMPERAMENT':
-            const allDogs = state.allDogs;
+            const allDogs = state.dogs;
             const filterDog = (action.payload === 'all') ? allDogs : allDogs.filter(e => e.temperaments?.includes(action.payload));
+
+            const filterDB = [];
+            allDogs.forEach(e => {
+                if (typeof e.id === 'string') {
+                    e.temperaments.forEach(t => {
+                        if (t.nombre === action.payload) filterDB.push(e);
+                    })
+                }
+            });
 
             return {
                 ...state,
-                dogs: filterDog
+                dogs: filterDog.concat(filterDB)
             };
         
         
         case 'FILTER_CREATED':
-            const auxDogs = state.allDogs;
+            const auxDogs = state.dogs;
 
             let filterCreation = null;
 
@@ -135,6 +142,10 @@ function rootReducer(state = initialState, action) {
 
         case 'DELETE_DOG':
             return { ...state };
+
+            
+        case 'UPDATE_DOG':
+            return { ...state }
 
 
         default:

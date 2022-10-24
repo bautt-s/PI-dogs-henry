@@ -40,7 +40,7 @@ const Home = () => {
     const createdBox = useRef();
     const sortingBox = useRef();
 
-
+    // función que setea y cambia los displays de las páginas
     const paginado = (numPag) => {
         setPagActual(numPag);
 
@@ -55,6 +55,7 @@ const Home = () => {
     };
 
 
+    // onClick del botón "clearFilter"
     const handleClear = () => {
         dispatch(getDogs());
         setOrder("");  
@@ -68,7 +69,7 @@ const Home = () => {
     useEffect(() => {
         ! dogs.length && dispatch(getDogs());
         dispatch(getTemperaments());
-      }, [dispatch]);
+    }, [dispatch]);
     
 
     return (
@@ -76,7 +77,6 @@ const Home = () => {
 
             <div className="navBg">
                 <span className="isotipo">Fetch Pups</span>
-
 
                 <div className="ordFilter">
                     <div className="wrap1">
@@ -92,7 +92,6 @@ const Home = () => {
                             <button className="clearFilter" onClick={handleClear}>Clear Filter</button>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -127,7 +126,6 @@ const Home = () => {
                     return (
                         <Card 
                             id = {dog.id}
-                            key = {dog.id}
                             name = {dog.nombre}
                             image = {dog.image}
                             weight = {dog.peso}
@@ -157,7 +155,7 @@ const Home = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30"src={LinkedIn}/></a>
+                            <a href="https://www.linkedin.com/in/baut-s/"><img width="30" height="30" src={LinkedIn} alt="linkedin"/></a>
                         </li>
                         <li>
                             <ul>
@@ -165,7 +163,7 @@ const Home = () => {
                             </ul>
                         </li>
                         <li>
-                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub}/></a>
+                            <a href="https://github.com/bautt-s"><img width="30" height="30" src={GitHub} alt="github"/></a>
                         </li>
                     </ul>
                 </div>
