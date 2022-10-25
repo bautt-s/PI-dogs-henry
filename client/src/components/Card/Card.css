@@ -29,7 +29,7 @@ body { font-family: 'Fira Sans', sans-serif; }
 }
 
 /* efecto de la img al hacer hover */
-.container:hover .imgDog{
+.container:hover .imgDog {
     transform: scale(1.25) rotate(2deg);
 }
 

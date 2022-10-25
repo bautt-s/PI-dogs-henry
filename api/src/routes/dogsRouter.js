@@ -131,7 +131,7 @@ router.put('/:id', async (req, res) => {
         funcion && modifyDog.set({funcion});
         grupo && modifyDog.set({grupo});
 
-        if (temperaments) {
+        if (temperaments.length) {
             await modifyDog.setTemperaments([]);
             temperaments.forEach(async e => {
                 const auxTemperamentos = await Temperaments.findAll({

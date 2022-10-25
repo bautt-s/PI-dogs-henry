@@ -74,6 +74,7 @@
 }
 
 .adicional {
+    width: 600px;
     margin-top: 50px;
     color: rgb(128, 128, 128);
 }
@@ -132,6 +133,16 @@
 .detailBody .detDescripcion .detTitulo {
     font-family: 'Rubik', sans-serif;
     font-size: 3em;
+    font-weight: 900;
+    max-width: 500px;
+    color: #181111;
+    text-decoration: underline;
+    text-decoration-color: rgba(241,122,126,1);
+}
+
+.detTituloGrande {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2.5em;
     font-weight: 900;
     max-width: 500px;
     color: #181111;

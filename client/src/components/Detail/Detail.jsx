@@ -67,14 +67,14 @@ const Detail = () => {
                             <div className="adicional">
                                 {details.funcion ? <p className="subtitleImg">This dog is specifically bred for {details.funcion}.</p> : null}
                                 {details.grupo ? <p className="subtitleImg">Its breed belongs to the group of {details.grupo}.</p> : null}
-                                {(! details.funcion || ! details.grupo) ? <p className="fake">this is a filler line lol</p> : null}
+                                {(! details.funcion || ! details.grupo) ? <p className="fake">invisible line so css doesnt mess up :D</p> : null}
                             </div>
                         ) : null}
                     </div>
 
                     <div className="detDescripcion">
                         <div className="detText">
-                            <h1 className="detTitulo pseudoTitle2">{details.nombre}</h1>
+                            <h1 className={(details.nombre.length > 20) ? "detTituloGrande pseudoTitle2" : "detTitulo pseudoTitle2"}>{details.nombre}</h1>
                             <div className="itemDet"><span className="detCat">Height: </span><p className="holder">{details.altura} cm</p></div>
                             <div className="itemDet"><span className="detCat">Weight: </span><p className="holder">{details.peso} kg</p></div>
                             {details.lifetime && details.lifetime[0] !== ' ' ? <div className="itemDet"><span className="detCat">Life span: </span><p className="holder">{details.lifetime}</p></div> : null}
