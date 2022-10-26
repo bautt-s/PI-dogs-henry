@@ -83,8 +83,7 @@ const Updater = ({ id, setShowUpdater }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (! errors.nombre && ! errors.pesoMin && ! errors.pesoMax && ! errors.altMin 
-            && ! errors.altMax && ! errors.lifetimeMin && ! errors.lifetimeMax) {
+        if (! Object.keys(errors).length) {
 
             const modifiedDog = {
                 ...input,

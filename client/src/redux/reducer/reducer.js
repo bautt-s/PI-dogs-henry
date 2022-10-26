@@ -4,9 +4,9 @@
 
 const initialState = {
     dogs: [],
-    temperaments: [],
     details: [],
-    dogsCopy: []
+    dogsCopy: [],
+    temperaments: [],
 };
 
 
@@ -132,6 +132,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'api') filterCreation = auxDogs.filter(dog => ! isNaN(dog.id));
             else if (action.payload === 'created') filterCreation = auxDogs.filter(dog => isNaN(dog.id));
             else filterCreation = auxDogs;
+            
             return {
                 ...state,
                 dogs: filterCreation

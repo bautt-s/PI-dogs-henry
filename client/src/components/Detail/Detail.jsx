@@ -19,8 +19,9 @@ const Detail = () => {
     const dogs = useSelector(state => state.dogs);
     const [showUpdater, setShowUpdater] = useState(false); 
 
-    const handleDelete = () => {
-        dispatch(deleteDog(id));
+    const handleDelete = async () => {
+        const res = await dispatch(deleteDog(id))
+        alert(res.payload);
         history.push('/home');
     }
 

@@ -9,7 +9,6 @@ import GitHub from '../../img/github.png';
 import './Creator.css'
 
 
-
 // validador de errores de los inputs
 // a.k.a. IF HELL
 const validateText = (input) => {
@@ -135,7 +134,8 @@ const Creator = () => {
     }
       
     const handleSelect = (e) => {
-        (! temperamentosDB.includes(e.target.value)) && setTempDB([...temperamentosDB, e.target.value]);
+        (! temperamentosDB.includes(e.target.value) && temperamentosDB.length < 6) && setTempDB([...temperamentosDB, e.target.value]);
+        if (temperamentosDB.length === 6) alert("You can only pick up to six temperaments.")
     }
     
     const handleDelete = (e) => {
