@@ -122,6 +122,8 @@ const Creator = () => {
                 funcion: [],
                 grupo: [],
             });
+
+            setTimeout(() => window.location.reload(), 500);
         } 
     }
 

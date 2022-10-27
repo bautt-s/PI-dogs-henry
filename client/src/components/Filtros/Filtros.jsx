@@ -8,6 +8,7 @@ function Filtros({ setMinNP, setMaxNP, setPagActual, temperBox, createdBox }) {
     const dispatch = useDispatch();
     
     const handleFiltroCreados = (e) => {
+      temperBox.current.selectedIndex = 0;
       setPagActual(1);
       setMinNP(0);
       setMaxNP(5);
@@ -15,6 +16,7 @@ function Filtros({ setMinNP, setMaxNP, setPagActual, temperBox, createdBox }) {
     }
     
     const handleFiltroTemp = (e) => {
+      createdBox.current.selectedIndex = 0;
       setPagActual(1);
       setMinNP(0);
       setMaxNP(5);
