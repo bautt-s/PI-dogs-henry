@@ -23,7 +23,6 @@ const Detail = () => {
         const res = await dispatch(deleteDog(id))
         alert(res.payload);
         history.push('/home');
-        setTimeout(() => window.location.reload(), 1000);
     }
 
     const handleUpdate = () => {

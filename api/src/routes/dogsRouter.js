@@ -120,33 +120,40 @@ router.put('/:id', async (req, res) => {
     const id = req.params.id;
     const { nombre, pesoMin, pesoMax, altMin, altMax, lifetimeMin, lifetimeMax, imagen, temperaments, funcion, grupo } = req.body;
 
-    try {
-        const modifyDog = await Dog.findByPk(id);
+    const repeatedName = await Dog.findAll({
+        where: { nombre }
+    });
 
-        nombre && modifyDog.set({nombre: nombre[0].toUpperCase() + nombre.slice(1)});
-        (pesoMin && pesoMax) && modifyDog.set({peso: `${pesoMin} - ${pesoMax}`});
-        (altMin && altMax) && modifyDog.set({altura: `${altMin} - ${altMax}`});
-        (lifetimeMin && lifetimeMax) && modifyDog.set({lifetime: `${lifetimeMin} - ${lifetimeMax} years`});
-        imagen && modifyDog.set({image: imagen});
-        funcion && modifyDog.set({funcion});
-        grupo && modifyDog.set({grupo});
-
-        if (temperaments.length) {
-            await modifyDog.setTemperaments([]);
-            temperaments.forEach(async e => {
-                const auxTemperamentos = await Temperaments.findAll({
-                    where: { nombre: e }
+    if (repeatedName.length) res.status(400).send("ERROR: Breed already exists.");
+    else {
+        try {
+            const modifyDog = await Dog.findByPk(id);
+    
+            nombre && modifyDog.set({nombre: nombre[0].toUpperCase() + nombre.slice(1)});
+            (pesoMin && pesoMax) && modifyDog.set({peso: `${pesoMin} - ${pesoMax}`});
+            (altMin && altMax) && modifyDog.set({altura: `${altMin} - ${altMax}`});
+            (lifetimeMin && lifetimeMax) && modifyDog.set({lifetime: `${lifetimeMin} - ${lifetimeMax} years`});
+            imagen && modifyDog.set({image: imagen});
+            funcion && modifyDog.set({funcion});
+            grupo && modifyDog.set({grupo});
+    
+            if (temperaments.length) {
+                await modifyDog.setTemperaments([]);
+                temperaments.forEach(async e => {
+                    const auxTemperamentos = await Temperaments.findAll({
+                        where: { nombre: e }
+                    });
+                
+                    await modifyDog.addTemperaments(auxTemperamentos[0]);
                 });
-            
-                await modifyDog.addTemperaments(auxTemperamentos[0]);
-            });
+            }
+    
+            await modifyDog.save();
+    
+            res.status(201).send('Breed was updated successfully.');
+        } catch (err) {
+            res.status(400).send('ERROR: There was an unexpected error.');
         }
-
-        await modifyDog.save();
-
-        res.status(201).send('Breed was updated successfully.');
-    } catch (err) {
-        res.status(400).send('ERROR: There was an unexpected error.');
     }
 });
 

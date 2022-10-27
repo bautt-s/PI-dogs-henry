@@ -109,8 +109,6 @@ const Updater = ({ id, setShowUpdater }) => {
                 funcion: [],
                 grupo: [],
             });
-
-            setTimeout(() => window.location.reload(), 500);
         } 
     }
 
