@@ -25,9 +25,7 @@ const Detail = () => {
         history.push('/home');
     }
 
-    const handleUpdate = () => {
-        setShowUpdater(true);
-    }
+    const handleUpdate = () => setShowUpdater(true);
 
     useEffect(() => {
         dispatch(getById(id));

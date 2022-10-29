@@ -16,11 +16,13 @@ router.get('/', async (req, res) => {
     const dogName = req.query.name;
     const allDogs = await getAll();
 
-    if (dogName) {
-        const queryDog = await allDogs.filter(raza => raza.nombre.toLowerCase().includes(dogName));
-        queryDog.length ? res.status(200).send(queryDog) : res.status(404).json({msg: "Breed not found :("});
-    } else {
-        res.status(200).send(allDogs);
+    try {
+        if (dogName) {
+            const queryDog = await allDogs.filter(raza => raza.nombre.toLowerCase().includes(dogName));
+            queryDog.length ? res.status(200).send(queryDog) : res.status(404).json({msg: "Breed not found :("});
+        } else res.status(200).send(allDogs);
+    } catch (err) {
+        res.status(404).send({msg: "ERROR: Unexpected error."})
     }
 });
 
@@ -34,12 +36,13 @@ router.get('/:idRaza', async (req, res) => {
     try {
         const id = req.params.idRaza;
         const allDogs = await getAll();
+
         if (id) {
             const idDog = await allDogs.find(dog => dog.id == id);
             idDog ? res.status(200).send(idDog) : res.status(404).json("Breed not found :(");
         }
     } catch (error) {
-        res.status(400).json("Unexpected error in search for ID.");
+        res.status(400).json("ERROR: Unexpected error in search for ID.");
     }
 });
 
@@ -50,10 +53,7 @@ router.get('/:idRaza', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const { nombre, pesoMin, pesoMax, altMin, altMax, imagen, lifetimeMin, lifetimeMax, temperaments, funcion, grupo } = req.body;
-    
-    const repeatedName = await Dog.findAll({
-        where: { nombre }
-    });
+    const repeatedName = await Dog.findAll({ where: { nombre } });
 
     if (repeatedName.length) res.status(400).send("ERROR: Breed already exists.");
     else {
@@ -71,6 +71,8 @@ router.post('/', async (req, res) => {
                     createdDB: true
                 });
     
+                // se busca que cada temperamento pasado por body tenga un modelo,
+                // luego se los relaciona con el modelo de perro creado anteriormente.
                 temperaments.forEach(async e => {
                     const auxTemperamentos = await Temperaments.findAll({
                         where: { nombre: e }
@@ -96,18 +98,20 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;
+
     try {
       if (id) {
         const deleteDog = await Dog.findByPk(id);
 
         if (deleteDog) {
-          await deleteDog.destroy()
-          res.status(200).send('Dog was deleted successfully.')
-        } else res.status(404).status("ERROR: ID could not be found.");
+            await deleteDog.destroy()
+            res.status(200).send('Dog was deleted successfully.')
+        } else res.status(404).status("ERROR: No matches for that ID.");
 
-      } else res.status(400).send('ERROR: Unexpected error.');
-    } catch (e) {
-      res.status(400).send('ERROR: ID not properly typed.')
+      } else res.status(400).send('ERROR: ID does not exist.');
+
+    } catch (err) {
+        res.status(400).send('ERROR: Unexpected error.')
     }
 });
 
@@ -119,10 +123,7 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
     const { nombre, pesoMin, pesoMax, altMin, altMax, lifetimeMin, lifetimeMax, imagen, temperaments, funcion, grupo } = req.body;
-
-    const repeatedName = await Dog.findAll({
-        where: { nombre }
-    });
+    const repeatedName = await Dog.findAll({ where: { nombre } });
 
     if (repeatedName.length) res.status(400).send("ERROR: Breed already exists.");
     else {
@@ -137,6 +138,9 @@ router.put('/:id', async (req, res) => {
             funcion && modifyDog.set({funcion});
             grupo && modifyDog.set({grupo});
     
+            
+            // si el usuario pasó temperamentos desde el front, se borran los modelos
+            // de temperamentos relacionados al perro manipulado, y se le asignan los nuevos.
             if (temperaments.length) {
                 await modifyDog.setTemperaments([]);
                 temperaments.forEach(async e => {

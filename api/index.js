@@ -21,7 +21,9 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 require('dotenv').config();
 
-// Syncing all the models at once.
+// syncea todos los modelos al mismo tiempo.
+// Heroku usa una variable env PORT. si se corre el back en Heroku,
+// se usa el puerto proveido por el servicio, y sino, el local (3001)
 conn.sync({ alter: true }).then(() => {
   if (process.env.PORT) {
     server.listen(process.env.PORT, () => {
@@ -29,7 +31,7 @@ conn.sync({ alter: true }).then(() => {
     });
   } else {
     server.listen(3001, () => {
-      console.log('%s listening at 3001'); // eslint-disable-line no-console
+      console.log('%s listening at 3001');
     });
   }
 });

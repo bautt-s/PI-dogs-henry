@@ -15,6 +15,7 @@ const SearchBar = ({ setMinNP, setMaxNP, setPagActual }) => {
         if (! searchInput) dispatch(getDogs());
         else {
             dispatch(getByName(searchInput.trim().toLowerCase()));
+
             setPagActual(1);
             setMinNP(0);
             setMaxNP(5);

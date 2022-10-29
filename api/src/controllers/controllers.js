@@ -1,11 +1,11 @@
-const axios = require("axios");
-const { Dog, Temperaments } = require("../db.js");
+import { get } from "axios";
+import { Dog, Temperaments } from "../db.js";
 const { API_KEY, API_URL } = process.env;
 
 
-// le "pego" a la API y transformo los datos
+// le pego a la API y transformo los datos
 const dataApi = async () => {
-    const apiDogs = await axios.get(`${API_URL}?api_key=${API_KEY}`)
+    const apiDogs = await get(`${API_URL}?api_key=${API_KEY}`)
     const infoDogs = await apiDogs.data.map(dog => {
         return {
           id: dog.id,
@@ -46,7 +46,7 @@ const getAll = async () => {
     return allData;
 }
   
-module.exports={
+export default {
     dataApi,
     dataDB,
     getAll

@@ -19,26 +19,25 @@ import './Home.css';
 const Home = () => {
 
     // paginado
-    const [numMinPag, setMinNP] = useState(0); 
-    const [numMaxPag, setMaxNP] = useState(5); 
-    const [pagActual, setPagActual] = useState(1);
-    const [perrosPorPag, setPerrosPorPag] = useState(8); 
+    const [numMinPag, setMinNP] = useState(0);           // setea el display min de num pag
+    const [numMaxPag, setMaxNP] = useState(5);           // setea el display max de num pag
+    const [pagActual, setPagActual] = useState(1);       // setea el display de num pag actual
+    const [perrosPorPag, setPerrosPorPag] = useState(8); // setea la cantidad de perros por pag
     
-    const indexUltDog = pagActual * perrosPorPag;  
-    const indexPrimerDog = indexUltDog - perrosPorPag; 
+    const indexUltDog = pagActual * perrosPorPag;        // obtiene el index del último dog mostrado en el array de dogs totales
+    const indexPrimerDog = indexUltDog - perrosPorPag;   // obtiene el index del primer dog mostrado en el array de dogs totales
 
     // selectores diversos
-    const dispatch = useDispatch();
-    const [order, setOrder] = useState(""); 
-    const dogs = useSelector(state => state.dogs);  
+    const dispatch = useDispatch();                      // se extrae el dispatch para las actions
+    const [order, setOrder] = useState("");              // éste state sólo sirve para re-renderizar el display luego de aplicar un ordenamiento
+    const dogs = useSelector(state => state.dogs);       // se extrae el array de dogs desde el store
     
     let dogsMostrados = undefined;
-    if (Array.isArray(dogs)) dogsMostrados = dogs.slice(indexPrimerDog, indexUltDog); 
+    if (Array.isArray(dogs)) dogsMostrados = dogs.slice(indexPrimerDog, indexUltDog); // se obtienen los dogs a mostrar
 
-    // refs de los select box
-    const temperBox = useRef();
-    const createdBox = useRef();
-    const sortingBox = useRef();
+    const temperBox = useRef();  // select box - filtro temperamentos
+    const createdBox = useRef(); // select box - filtro creados
+    const sortingBox = useRef(); // select box - ordenamientos
 
     // función que setea y cambia los displays de las páginas
     const paginado = (numPag) => {
@@ -54,7 +53,6 @@ const Home = () => {
         }
     };
 
-
     // onClick del botón "clearFilter"
     const handleClear = () => {
         dispatch(getDogs());
@@ -64,7 +62,6 @@ const Home = () => {
         temperBox.current.selectedIndex = 0;
         sortingBox.current.selectedIndex = 0;
     }
-
 
     useEffect(() => {
         ! dogs.length && dispatch(getDogs());
@@ -101,7 +98,7 @@ const Home = () => {
                     </div>
 
                     <div className="search"> 
-                        <SearchBar setMinNP={setMinNP} setMaxNP={setMaxNP} setPagActual={setPagActual} />
+                        <SearchBar setMinNP={setMinNP} setMaxNP={setMaxNP} setPagActual={setPagActual} dogsMostrados={dogsMostrados} />
                     </div>                 
                 </div>
                 
