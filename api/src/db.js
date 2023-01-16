@@ -11,11 +11,10 @@ let sequelize = undefined;
 // con la copia de la db que proveé Heroku, y su propia config.
 // si el back no lo corre Heroku, sino que se corre localmente, usa la db y config local.
 if (process.env.DATABASE_URL) {
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect:  'postgres',
-    protocol: 'postgres',
-    logging:  false
-  });
+  const sequelize = new Sequelize(`postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}`, {
+  logging: false, // setear a console.log para ver las queries SQL
+  native: false, // usa pg-native para ahorrar un ~30% de velocidad
+});
 } else {
   sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_DATABASE}`, {
   logging: false, // setear a console.log para ver las queries SQL

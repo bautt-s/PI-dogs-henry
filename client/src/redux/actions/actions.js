@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export function getDogs() {
     return async function(dispatch) {
-        const res = await axios.get('https://dogs-backend-bautts.herokuapp.com/dogs')
+        const res = await axios.get('https://bautts-dogs-api.up.railway.app/dogs')
         dispatch({ type: 'GET_DOGS', payload: res.data })
     };
 }
@@ -11,7 +11,7 @@ export function getDogs() {
 
 export function getTemperaments() {
     return async function(dispatch) {
-        const res = await axios.get('https://dogs-backend-bautts.herokuapp.com/temperaments')
+        const res = await axios.get('https://bautts-dogs-api.up.railway.app/temperaments')
         dispatch({ type: 'GET_TEMPERAMENTS', payload: res.data })
     };
 }
@@ -20,7 +20,7 @@ export function getTemperaments() {
 export function getByName(name) {
     return async function(dispatch) {
         try {
-            const res = await axios.get(`https://dogs-backend-bautts.herokuapp.com/dogs?name=${name}`)
+            const res = await axios.get(`https://bautts-dogs-api.up.railway.app/dogs?name=${name}`)
             dispatch({ type: 'GET_BY_NAME', payload: res.data })
         } catch (err) {
             dispatch({ type: 'GET_BY_NAME', payload: err.response.data })
@@ -32,7 +32,7 @@ export function getByName(name) {
 export function getById(id) {
     return async function(dispatch) {
         try {
-            const res = await axios.get(`https://dogs-backend-bautts.herokuapp.com/dogs/${id}`)
+            const res = await axios.get(`https://bautts-dogs-api.up.railway.app/dogs/${id}`)
             dispatch({ type: 'GET_BY_ID', payload: res.data })
         } catch (err) {
             dispatch({ type: 'GET_BY_ID', payload: err.response.data})
@@ -44,7 +44,7 @@ export function getById(id) {
 export function createDogs(breed) {
     return async function(dispatch) {
         try {
-            let res = await axios.post('https://dogs-backend-bautts.herokuapp.com/dogs/', breed);
+            let res = await axios.post('https://bautts-dogs-api.up.railway.app/dogs/', breed);
             return dispatch({ type: 'CREATE_DOG', payload: res.data });
         } catch (err) {
             return dispatch({ type: 'CREATE_DOG', payload: err.response.data })
@@ -56,7 +56,7 @@ export function createDogs(breed) {
 export function deleteDog(id) {
     return async function(dispatch) {
         try {
-            const res = await axios.delete('https://dogs-backend-bautts.herokuapp.com/dogs/' + id);
+            const res = await axios.delete('https://bautts-dogs-api.up.railway.app/dogs/' + id);
             return dispatch({ type: 'DELETE_DOG', payload: res.data });
         } catch (err) {
             return dispatch({ type: 'DELETE_DOG', payload: err.response.data });
@@ -68,7 +68,7 @@ export function deleteDog(id) {
 export function updateDog(id, breed) {
     return async function(dispatch) {
         try {
-            const res = await axios.put(`https://dogs-backend-bautts.herokuapp.com/dogs/${id}`, breed);
+            const res = await axios.put(`https://bautts-dogs-api.up.railway.app/dogs/${id}`, breed);
             return dispatch({ type: 'UPDATE_DOG', payload: res.data });
         } catch (err) {
             return dispatch({ type: 'UPDATE_DOG', payload: err.response.data })
