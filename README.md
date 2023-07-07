@@ -1,5 +1,8 @@
 # Fetch Pups
 
+![image](https://github.com/bautt-s/PI-dogs-henry/assets/109627713/2363fecc-a0a1-4ef9-ba14-4e407ccb14da)
+
+
 Hello! This is my **Individual Project**. Based on "The Dog API", the user is able to fetch from a wide variety of breeds. Developed as a **Single Page Application**, it makes use of the mentioned API, as well as its own database, implemented in PostgreSQL, in order to store all of the user's creations, with the help of an ORM (Sequelize)
 
 ## Technologies
